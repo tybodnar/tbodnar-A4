@@ -1,53 +1,13 @@
-<script>
-     import '../style.css';
-     import {writable} from 'svelte/store';
-     let todoItem = '';
-     let storedList;
-     let todoList = writable([]);
 
-     if(typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
-          storedList = localStorage.getItem('storedList');
-          if (storedList) {
-               $todoList = (JSON.parse(storedList));
-          }
-     }
-
-     function updateList() {
-          return storedList = localStorage.setItem('storedList', JSON.stringify($todoList));
-     }
+<label class="switch" onclick="darkMode()">
+     <input type="checkbox">
+     <span class="slider round"></span>
+</label>
 
 
+<h3 id="DarkModetext">Dark Mode is OFF</h3>
 
-
-     $: isDone = $todoList.filter(item => item.done);
-
-     function addToArray() {
-          if (todoItem == '') {
-               return;
-          }
-          $todoList = [...$todoList, {
-               text: todoItem,
-               done: false,
-
-          }];
-          console.log($todoList);
-          updateList();
-          todoItem = '';
-     }
-     function removeThis(index) {
-          $todoList.splice(index, 1);
-          $todoList = $todoList;
-          updateList();
-     }
-     function clearDone() {
-          $todoList = $todoList.filter(item => !item.done)
-          updateList();
-     }
-</script>
-
-
-
-<h1>To Do List</h1>
+<h1 id="hOne">To Do List</h1>
 
 <form on:submit|preventDefault={addToArray}  class="flex">
      <input type="text" bind:value={todoItem}>
@@ -81,10 +41,12 @@
 
 
 
+
 <div class="center">
      {#if isDone.length > 0}
      <button style="align-items: center; display: flex; justify-content: center;" on:click={clearDone}>Remove Done</button>
      {/if}
+     
 </div>
 
 <style>
@@ -172,6 +134,74 @@
           background-color: #ffffff;
      }
 
+
+
+     /* SWITCH CODE FROM W3SCHOOLS.COM */
+
+     /* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  float: right;
+  margin-right: 2vw;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
      
 
 
@@ -199,3 +229,59 @@
      }
 
 </style>
+
+<script>
+     import '../style.css';
+     import {writable} from 'svelte/store';
+     let todoItem = '';
+     let storedList;
+     let todoList = writable([]);
+
+     if(typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
+          storedList = localStorage.getItem('storedList');
+          if (storedList) {
+               $todoList = (JSON.parse(storedList));
+          }
+     }
+
+     function updateList() {
+          return storedList = localStorage.setItem('storedList', JSON.stringify($todoList));
+     }
+
+
+
+
+     $: isDone = $todoList.filter(item => item.done);
+
+     function addToArray() {
+          if (todoItem == '') {
+               return;
+          }
+          $todoList = [...$todoList, {
+               text: todoItem,
+               done: false,
+
+          }];
+          console.log($todoList);
+          updateList();
+          todoItem = '';
+     }
+     function removeThis(index) {
+          $todoList.splice(index, 1);
+          $todoList = $todoList;
+          updateList();
+     }
+     function clearDone() {
+          $todoList = $todoList.filter(item => !item.done)
+          updateList();
+     }
+
+     // window.darkMode = darkMode;
+
+     function darkMode() {
+          let content = document.getElementById("DarkModetext");
+          content.innerText = "Dark Mode is ON";
+     }
+
+
+</script>
