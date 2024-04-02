@@ -1,13 +1,14 @@
 
-<label class="switch" onclick="darkMode()">
-     <input type="checkbox">
+
+<label class="switch" >
+     <input type="checkbox" on:change={darkMode}>
      <span class="slider round"></span>
 </label>
 
 
-<h3 id="DarkModetext">Dark Mode is OFF</h3>
+<h3 class="darkModeText" id="DarkModetext">Light Mode is OFF</h3>
 
-<h1 id="hOne">To Do List</h1>
+<h1 id="hOne">To Do List!</h1>
 
 <form on:submit|preventDefault={addToArray}  class="flex">
      <input type="text" bind:value={todoItem}>
@@ -24,13 +25,13 @@
 
      <ul>
           {#each $todoList as item, index}
-               <li>
+               <li transition:fade={{ delay: 0, duration: 200 }}>
 
                     <input type="checkbox" bind:checked={item.done} on:change={updateList}>
 
 
-                    <span class:done={item.done} >{item.text}</span>
-                    <span on:click={() => removeThis(index)} class="remove" role="button" tabindex="0">&times;</span>
+                    <span class:done={item.done} >{item.text} </span>
+                    <span on:click={() => removeThis(index)} class="remove" id="remover" role="button" tabindex="0">&times;</span>
                </li>
           {/each}
      </ul>
@@ -44,7 +45,7 @@
 
 <div class="center">
      {#if isDone.length > 0}
-     <button style="align-items: center; display: flex; justify-content: center;" on:click={clearDone}>Remove Done</button>
+     <button transition:fade={{ delay: 0, duration: 200 }} style="align-items: center; display: flex; justify-content: center;" on:click={clearDone}>Remove Done</button>
      {/if}
      
 </div>
@@ -62,7 +63,7 @@
           text-decoration: line-through;
      }
      .remove {
-          color: rgb(255, 255, 255);
+          color: inherit;
           cursor: pointer;
           float: right;
           font-size: 1.3em;
@@ -202,6 +203,11 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+     .darkModeText{
+          padding-left: 1vh;
+          padding-top: 0.5vh;
+     }
      
 
 
@@ -231,6 +237,9 @@ input:checked + .slider:before {
 </style>
 
 <script>
+     import { fade } from 'svelte/transition';
+     import { quintOut } from 'svelte/easing';
+     import { fly } from 'svelte/transition';
      import '../style.css';
      import {writable} from 'svelte/store';
      let todoItem = '';
@@ -276,11 +285,31 @@ input:checked + .slider:before {
           updateList();
      }
 
-     //window.darkMode = darkMode;
+     // window.darkMode = darkMode;
+     let switched = true;
 
      function darkMode() {
-          let content = document.getElementById("DarkModetext");
-          content.innerText = "Dark Mode is ON";
+     let content = document.getElementById("DarkModetext");
+
+          if (switched) {
+               content.innerText = "Light Mode is ON";
+               document.body.style.backgroundColor = "#ebebeb";
+               document.body.style.color = "rgb(18, 18, 18)";
+
+               //let remover = document.getElementById("remover");
+               //counter++;
+               switched = false;
+               
+          } else {
+               document.body.style.backgroundColor = "rgb(18, 18, 18)";
+               document.body.style.color = "white";
+               // counter = 0;
+               switched = true;
+               content.innerText = "Light Mode is OFF";
+          }
+
+          
+          
      }
 
 
