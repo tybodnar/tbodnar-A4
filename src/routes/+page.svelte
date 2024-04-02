@@ -276,7 +276,7 @@ input:checked + .slider:before {
           updateList();
      }
 
-     // window.darkMode = darkMode;
+     //window.darkMode = darkMode;
 
      function darkMode() {
           let content = document.getElementById("DarkModetext");
