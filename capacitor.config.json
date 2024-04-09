@@ -1,0 +1,8 @@
+{
+  "appId": "com.tbodnar.todo",
+  "appName": "To Do!",
+  "webDir": "build",
+  "server": {
+    "androidScheme": "https"
+  }
+}

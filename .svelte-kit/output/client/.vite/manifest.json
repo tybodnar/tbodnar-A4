@@ -1,0 +1,90 @@
+{
+  ".svelte-kit/generated/client-optimized/app.js": {
+    "file": "_app/immutable/entry/app.COpdNtQm.js",
+    "name": "entry/app",
+    "src": ".svelte-kit/generated/client-optimized/app.js",
+    "isEntry": true,
+    "imports": [
+      "_scheduler.BAwge4yL.js",
+      "_index.riwe47ij.js"
+    ],
+    "dynamicImports": [
+      ".svelte-kit/generated/client-optimized/nodes/0.js",
+      ".svelte-kit/generated/client-optimized/nodes/1.js",
+      ".svelte-kit/generated/client-optimized/nodes/2.js"
+    ]
+  },
+  ".svelte-kit/generated/client-optimized/nodes/0.js": {
+    "file": "_app/immutable/nodes/0.idF2SCCN.js",
+    "name": "nodes/0",
+    "src": ".svelte-kit/generated/client-optimized/nodes/0.js",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_scheduler.BAwge4yL.js",
+      "_index.riwe47ij.js"
+    ]
+  },
+  ".svelte-kit/generated/client-optimized/nodes/1.js": {
+    "file": "_app/immutable/nodes/1.xq7xOU8P.js",
+    "name": "nodes/1",
+    "src": ".svelte-kit/generated/client-optimized/nodes/1.js",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_scheduler.BAwge4yL.js",
+      "_index.riwe47ij.js",
+      "_entry.0gw1zmh9.js"
+    ]
+  },
+  ".svelte-kit/generated/client-optimized/nodes/2.js": {
+    "file": "_app/immutable/nodes/2.BUo8M2J_.js",
+    "name": "nodes/2",
+    "src": ".svelte-kit/generated/client-optimized/nodes/2.js",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_scheduler.BAwge4yL.js",
+      "_index.riwe47ij.js",
+      "_index.BXwGqzWn.js"
+    ],
+    "css": [
+      "_app/immutable/assets/2.BZxHScZK.css"
+    ]
+  },
+  "_entry.0gw1zmh9.js": {
+    "file": "_app/immutable/chunks/entry.0gw1zmh9.js",
+    "name": "entry",
+    "imports": [
+      "_scheduler.BAwge4yL.js",
+      "_index.BXwGqzWn.js"
+    ]
+  },
+  "_index.BXwGqzWn.js": {
+    "file": "_app/immutable/chunks/index.BXwGqzWn.js",
+    "name": "index",
+    "imports": [
+      "_scheduler.BAwge4yL.js"
+    ]
+  },
+  "_index.riwe47ij.js": {
+    "file": "_app/immutable/chunks/index.riwe47ij.js",
+    "name": "index",
+    "imports": [
+      "_scheduler.BAwge4yL.js"
+    ]
+  },
+  "_scheduler.BAwge4yL.js": {
+    "file": "_app/immutable/chunks/scheduler.BAwge4yL.js",
+    "name": "scheduler"
+  },
+  "node_modules/@sveltejs/kit/src/runtime/client/entry.js": {
+    "file": "_app/immutable/entry/start.CM7X4R-6.js",
+    "name": "entry/start",
+    "src": "node_modules/@sveltejs/kit/src/runtime/client/entry.js",
+    "isEntry": true,
+    "imports": [
+      "_entry.0gw1zmh9.js"
+    ]
+  }
+}
